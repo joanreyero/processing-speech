@@ -1,0 +1,90 @@
+#!/usr/bin/bash
+
+shopt -s extglob
+
+# this automatically sets USER to be your username - DO NOT CHANGE THIS LINE
+USER=${USER:-`whoami`}
+
+# this is an upload directory just for this year's data - DO NOT CHANGE THIS LINE
+DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
+
+# you MUST CHANGE the following line to give the correct details for your own data
+#  replace the g with either m (for male voices) or f (for female voices)
+#  (note: we treat gender as binary, as is standard in the field; if you don't identify as either, please just pick one)
+#  and adjust the other values as necessary - refer to info.txt for examples
+INFO=${USER}" g iMac NN France"
+
+# and after you have done the above, comment out or delete this line
+echo "You have forgotten to edit the make_mfccs script to specify your gender and accent"; exit 1
+
+
+# you should not need to change anything below here, unless you attempt more advanced experiments
+
+echo "Appending your information to "${DATA}/info.txt
+echo $INFO >> ${DATA}/info.txt
+
+# 1) copy waveforms into common file space
+# 2) copy label files into common file space
+# 3) make mfcc files from waveforms
+
+# first, process the training data, which must be called something like "simonk_train.wav"
+F=wav/${USER}_train.wav
+if test -f $F
+then
+	echo Converting $F "to correct waveform format and saving in" ${DATA}/wav/train/`basename $F`
+	ch_wave -F 16000 -otype nist -c 0 -o ${DATA}/wav/train/`basename $F` $F
+
+	echo "Making MFCCs for" ${DATA}/wav/train/`basename $F`
+	HCopy -T 1 -C resources/CONFIG_for_coding \
+	       ${DATA}/wav/train/`basename $F`\
+	       ${DATA}/mfcc/train/`basename $F .wav`.mfcc
+
+else
+	echo Cannot find $F
+	exit
+fi
+
+
+# copy the train and test label files
+F=lab/${USER}_train.lab
+if test -f $F
+then
+	cp $F ${DATA}/lab/train/
+else
+	echo "Cannot find your training labels, which should be in" $F
+	exit
+fi
+
+F=lab/${USER}_test.mlf
+if test -f $F
+then
+	cp $F ${DATA}/lab/test/
+else
+	echo "Cannot find your test labels, which should be in" $F
+	exit
+fi
+
+
+# first, process the training data, which must be called something like "simonk_test01.wav"
+for F in `ls wav/${USER}_test?(_)??.wav`
+do
+
+	if test -f $F
+	then
+
+		echo Converting $F "to correct waveform format and saving in" ${DATA}/wav/test/`basename $F`
+		ch_wave -F 16000 -otype nist -c 0 -o ${DATA}/wav/test/`basename $F` $F
+
+		echo Making MFCCs for $F
+		HCopy -T 1 -C resources/CONFIG_for_coding \
+       		${DATA}/wav/test/`basename $F`\
+       		${DATA}/mfcc/test/`basename $F .wav`.mfcc
+	else
+		echo "Cannot find the test waveform" $F
+		exit
+	fi
+done
+
+# now make them readable by everybody
+echo "Changing file permissions"
+chmod go+r ${DATA}/*/*/${USER}_*

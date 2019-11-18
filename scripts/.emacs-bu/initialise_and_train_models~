@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+inisitalise_models
+train_models

@@ -2,21 +2,21 @@
 
 # to use your own data, this automatically sets USER to be your username
 # USING OWN user
-# USER=${USER:-`whoami`}
+#USER=${USER:-`whoami`}
 
 # USING SIMON KING
 #USER=simonk
 
 # USING A COMAND LINE ARGUMENT
-echo Argument 1 is USER
+#echo Argument 1 is USER
 USER=$1
-
+DATA=$2
 # and this is the path to where your data was placed by the make_mfccs script
 # FOR THE DATA SELF-UPLOADED
-# DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
+#DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
 
 # FOR SIMON KING DATA
-DATA=${DATA:-/Volumes/Network/courses/sp/data}
+#DATA=${DATA:-/Volumes/Network/courses/sp/data}
 # later, to use another user's data, for example "simonk"
 # USER=simonk
 # and to access all data from all years, use this path

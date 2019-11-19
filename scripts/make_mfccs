@@ -12,10 +12,10 @@ DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
 #  replace the g with either m (for male voices) or f (for female voices)
 #  (note: we treat gender as binary, as is standard in the field; if you don't identify as either, please just pick one)
 #  and adjust the other values as necessary - refer to info.txt for examples
-INFO=${USER}" g iMac NN France"
+INFO=${USER}" m google_pixel_2 NN Spain"
 
 # and after you have done the above, comment out or delete this line
-echo "You have forgotten to edit the make_mfccs script to specify your gender and accent"; exit 1
+#echo "You have forgotten to edit the make_mfccs script to specify your gender and accent"; exit 1
 
 
 # you should not need to change anything below here, unless you attempt more advanced experiments

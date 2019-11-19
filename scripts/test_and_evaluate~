@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+# USING A COMAND LINE ARGUMENT
+echo Argument 1 is USER
+
+if [ $1=me ]
+then
+    USER=${USER:-`whoami`}
+    DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
+else 
+    USER=$1
+    DATA=${DATA:-/Volumes/Network/courses/sp/data}
+fi
+
+
+./scripts/recognise_test_data $USER $DATA
+#./scripts/results $USER $DATA

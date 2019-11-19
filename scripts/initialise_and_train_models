@@ -8,16 +8,17 @@
 #USER=simonk
 
 # USING A COMAND LINE ARGUMENT
-echo Argument 1 is USER
+#echo Argument 1 is USER
 
-if [ $1=me ]
-then
-    USER=${USER:-`whoami`}
-    DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
-else 
+#UNCOMMENT IF FOR SPEAKER INDEPENDENT SYSTEM
+#if [ $1=me ]
+#then
+#    USER=${USER:-`whoami`}
+#    DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
+#else 
     USER=$1
     DATA=${DATA:-/Volumes/Network/courses/sp/data}
-fi
+#fi
 
 # and this is the path to where your data was placed by the make_mfccs script
 # FOR THE DATA SELF-UPLOADED

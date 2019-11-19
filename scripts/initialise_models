@@ -9,7 +9,7 @@
 
 # USING A COMAND LINE ARGUMENT
 #echo Argument 1 is USER
-USER=$1
+USER_LIST=$1
 DATA=$2
 # and this is the path to where your data was placed by the make_mfccs script
 # FOR THE DATA SELF-UPLOADED
@@ -32,19 +32,23 @@ PROTO=5state
 set -x
 
 # initialise each model
-for WORD in `cat resources/word_list`
+
+for USER in `cat ${USER_LIST}`
 do
+    for WORD in `cat resources/word_list`
+    do
 
- echo Initialising model of $WORD
+	echo Initialising model of $WORD
 
- HInit -T 1 \
-	-G ESPS \
-        -m 1 \
-        -C resources/CONFIG \
-        -l $WORD \
-        -M models/hmm0 \
-        -o $WORD \
-        -L ${DATA}/lab/train \
-	models/proto/$PROTO \
-	${DATA}/mfcc/train/${USER}_train.mfcc
+	HInit -T 1 \
+	    -G ESPS \
+            -m 1 \
+            -C resources/CONFIG \
+            -l $WORD \
+            -M models/hmm0 \
+            -o $WORD \
+            -L ${DATA}/lab/train \
+	    models/proto/$PROTO \
+	    ${DATA}/mfcc/train/${USER}_train.mfcc
+    done
 done

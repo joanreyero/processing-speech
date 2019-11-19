@@ -43,12 +43,12 @@ do
 	HInit -T 1 \
 	    -G ESPS \
             -m 1 \
+	    -S myscript.scp \
             -C resources/CONFIG \
             -l $WORD \
             -M models/hmm0 \
             -o $WORD \
             -L ${DATA}/lab/train \
-	    models/proto/$PROTO \
-	    ${DATA}/mfcc/train/${USER}_train.mfcc
+	    models/proto/$PROTO
     done
 done

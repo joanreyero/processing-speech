@@ -11,14 +11,16 @@ DATA=$2
 # later, to use another user's data, for example "simonk"
 # USER=simonk
 # and to access all data from all years, use this path
-# DATA=${DATA:-/Volumes/Network/courses/sp/data}
+DATA=${DATA:-/Volumes/Network/courses/sp/data}
 
 shopt -s extglob
 
+#-I ${DATA}/lab/test/${USER}_test.mlf \
+#rec/${USER}_test?(_)??.rec
 HResults -p \
- -I ${DATA}/lab/test/${USER}_test.mlf \
+ -I ${DATA}/everyone.mlf \
  resources/word_list \
- rec/${USER}_test?(_)??.rec
+ rec/*.rec
 
 
 

@@ -2,8 +2,8 @@
 
 # to use your own data, this automatically sets USER to be your username
 #USER=${USER:-`whoami`}
-USER_LIST=$1
-DATA=$2
+MFCC_LIST_FILE=$1
+DATA=/Volumes/Network/courses/sp/data
 # and this is the path to where your data was placed by the make_mfccs script
 #DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
 #DATA=${DATA:-/Volumes/Network/courses/sp/data}
@@ -13,8 +13,8 @@ DATA=$2
 # DATA=${DATA:-/Volumes/Network/courses/sp/data}
 
 # train each initialised model
-for USER in `cat ${USER_LIST}`
-do
+#for USER in `cat ${USER_LIST}`
+#do
     for WORD in `cat resources/word_list`
     do
 	
@@ -23,13 +23,14 @@ do
 	HRest -T 1 \
 	    -G ESPS \
             -m 1 \
+	    -S ${MFCC_LIST_FILE} \
             -C resources/CONFIG \
             -l $WORD \
             -M models/hmm1 \
             -L ${DATA}/lab/train/ \
-	    models/hmm0/$WORD \
-	    ${DATA}/mfcc/train/${USER}_train.mfcc
+	    models/hmm0/$WORD
+	    #${DATA}/mfcc/train/${USER}_train.mfcc
 
     done
-done
+#done
 

@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+
+for USER in `cat users.txt`
+do
+    echo /Volumes/Network/courses/sp/data/mfcc/train/${USER}_train.mfcc >> $1
+done

@@ -1,0 +1,1 @@
+/Volumes/Network/courses/sp/data/mfcc/train/simonk_train.mfcc

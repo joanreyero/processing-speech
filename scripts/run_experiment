@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+
+USER_LIST_FILE=$1
+
+
+USERS_MFCC_LIST=mfccs_to_use.txt
+
+# Get the mfcc list
+rm ${USERS_MFCC_LIST} # we need to remove the old one if it exists
+
+# users_mfccs will get the MFCCs of the selected users and save them if
+# USERS_MFCC_LIST
+./scripts/users_mfccs ${USERS_MFCC_LIST}
+
+# Initialising models
+./scripts/initialise_models ${USERS_MFCC_LIST}
+
+# Training models
+./scripts/train_models ${USERS_MFCC_LIST}
+
+if [ -z "$(ls -A rec)" ]; then
+   echo "Empty"
+else
+   rm rec/*
+fi
+
+# Testing and evaluating
+./scripts/recognise_test_data ${USER_LIST_FILE}
+./scripts/results
+
+
+
+
+

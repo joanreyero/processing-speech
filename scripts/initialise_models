@@ -9,8 +9,8 @@
 
 # USING A COMAND LINE ARGUMENT
 #echo Argument 1 is USER
-USER_LIST=$1
-DATA=$2
+MFCC_LIST_FILE=$1
+DATA=/Volumes/Network/courses/sp/data/
 # and this is the path to where your data was placed by the make_mfccs script
 # FOR THE DATA SELF-UPLOADED
 #DATA=${DATA:-/Volumes/Network/courses/sp/data_upload}
@@ -33,22 +33,21 @@ set -x
 
 # initialise each model
 
-for USER in `cat ${USER_LIST}`
+
+for WORD in `cat resources/word_list`
 do
-    for WORD in `cat resources/word_list`
-    do
-
-	echo Initialising model of $WORD
-
-	HInit -T 1 \
-	    -G ESPS \
-            -m 1 \
-	    -S myscript.scp \
-            -C resources/CONFIG \
-            -l $WORD \
-            -M models/hmm0 \
-            -o $WORD \
-            -L ${DATA}/lab/train \
-	    models/proto/$PROTO
-    done
+    
+    echo Initialising model of $WORD
+    
+    HInit -T 1 \
+	-G ESPS \
+        -m 1 \
+	-S ${MFCC_LIST_FILE} \
+        -C resources/CONFIG \
+        -l $WORD \
+        -M models/hmm0 \
+        -o $WORD \
+        -L ${DATA}/lab/train \
+	models/proto/$PROTO
 done
+

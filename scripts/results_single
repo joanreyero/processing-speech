@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+USER=$1
+DATA=${DATA:-/Volumes/Network/courses/sp/data}
+
+shopt -s extglob
+
+HResults \
+ -I ${DATA}/lab/test/${USER}_test.mlf \
+ resources/word_list \
+ rec/${USER}_test?(_)??.rec
+
+
+
+# to do results for more than one speaker you need to load more than
+# one MLF and more than one set of .rec files. Do it like this:
+#
+# HResults -p \
+#  -I ${DATA}/lab/test/simonk_test.mlf \
+#  -I ${DATA}/lab/test/scottn_test.mlf \
+#  resources/word_list \
+#  rec/simonk_test*.rec \
+#  rec/scottn_test*.rec

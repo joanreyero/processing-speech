@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+USER=$1
+DATA=${DATA:-/Volumes/Network/courses/sp/data}
+
+# train each initialised model
+for WORD in `cat resources/word_list`
+do
+
+ #echo training model of $WORD
+
+ HRest -T 0 \
+	-G ESPS \
+        -m 1 \
+        -C resources/CONFIG \
+        -l $WORD \
+        -M models/hmm1 \
+        -L ${DATA}/lab/train/ \
+	models/hmm0/$WORD \
+	${DATA}/mfcc/train/${USER}_train.mfcc
+
+done

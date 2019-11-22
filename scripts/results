@@ -17,7 +17,7 @@ shopt -s extglob
 
 #-I ${DATA}/lab/test/${USER}_test.mlf \
 #rec/${USER}_test?(_)??.rec
-HResults -p \
+HResults \
  -I ${DATA}/everyone.mlf \
  resources/word_list \
  rec/*.rec

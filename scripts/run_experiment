@@ -1,22 +1,23 @@
 #!/usr/bin/bash
 
-USER_LIST_FILE=$1
+USER_LIST_TRAIN=$1
+USER_LIST_TEST=$2
 
 
-USERS_MFCC_LIST=mfccs_to_use.txt
+USERS_MFCC_LIST_TRAIN=user_mfccs.txt
 
 # Get the mfcc list
-rm ${USERS_MFCC_LIST} # we need to remove the old one if it exists
+rm ${USERS_MFCC_LIST_TRAIN} # we need to remove the old one if it exists
 
 # users_mfccs will get the MFCCs of the selected users and save them if
 # USERS_MFCC_LIST
-./scripts/users_mfccs ${USERS_MFCC_LIST}
+./scripts/users_mfccs ${USER_LIST_TRAIN} ${USERS_MFCC_LIST_TRAIN}
 
 # Initialising models
-./scripts/initialise_models ${USERS_MFCC_LIST}
+./scripts/initialise_models ${USERS_MFCC_LIST_TRAIN}
 
 # Training models
-./scripts/train_models ${USERS_MFCC_LIST}
+./scripts/train_models ${USERS_MFCC_LIST_TRAIN}
 
 if [ -z "$(ls -A rec)" ]; then
    echo "Empty"
@@ -25,8 +26,8 @@ else
 fi
 
 # Testing and evaluating
-./scripts/recognise_test_data ${USER_LIST_FILE}
-./scripts/results
+./scripts/recognise_test_data ${USER_LIST_TEST}
+./scripts/results | grep WORD | cut -d "=" -f3 | cut -d" " -f1 | awk '{print 100 - $1}'
 
 
 

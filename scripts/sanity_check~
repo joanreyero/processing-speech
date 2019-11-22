@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+USER_LIST=$1
+
+for USER in `cat ${USER_LIST}`
+do
+    # Initialising models
+    ./scripts/initialise_models_single ${USER}
+    
+    # Training models
+    ./scripts/train_models_single ${USER}
+    
+    if [ -z "$(ls -A rec)" ]; then
+	echo "Empty"
+    else
+	rm rec/*
+    fi
+
+    # Testing and evaluating
+    ./scripts/recognise_test_data_single ${USER}
+    WER = ./scripts/results ${USER} | grep WORD | \
+	cut -d "=" -f3 | cut -d" " -f1 | awk '{print 100 - $1}'
+    echo WOR
+done
+

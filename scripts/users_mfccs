@@ -1,7 +1,9 @@
 #!/usr/bin/bash
 
+USER_LIST_FILE=$1
+DEST_FILE=$2
 
-for USER in `cat users.txt`
+for USER in `cat ${USER_LIST_FILE}`
 do
-    echo /Volumes/Network/courses/sp/data/mfcc/train/${USER}_train.mfcc >> $1
+    echo /Volumes/Network/courses/sp/data/mfcc/train/${USER}_train.mfcc >> $2
 done

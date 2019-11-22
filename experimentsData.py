@@ -6,6 +6,12 @@ def experiment_1(df, name, n_train, n_test):
     save_names(make_samples(df[females], n_train, df[males], n_test),
                name)
 
+def make_samples(df_train, n_train, df_test, n_test):
+        train_sample = df_train.sample(n=n_train)
+        df_test = remove_sample(df_test, train_sample)
+        test_sample = df_test.sample(n=n_test)
+        return [train_sample, test_sample]              
+
 
 def remove_sample(df, sample):
     """ Remove all rows that are in sample and in df.
@@ -13,13 +19,6 @@ def remove_sample(df, sample):
     return (pd.merge(df,sample, indicator=True, how='outer')
             .query('_merge=="left_only"')
             .drop('_merge', axis=1))
-
-
-def make_samples(df_train, n_train, df_test, n_test):
-        train_sample = df_train.sample(n=n_train)
-        df_test = remove_sample(df_test, train_sample)
-        test_sample = df_test.sample(n=n_test)
-        return [train_sample, test_sample]
 
 
 def save_names(dfs, experiment):

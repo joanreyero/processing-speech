@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+USER_LIST=$1
+
+rm bad_users.txt
+
+for USER in `cat ${USER_LIST}`
+do
+    # Initialising models
+    ./scripts/initialise_models_single ${USER}
+    echo initialised
+    
+    # Training models
+    ./scripts/train_models_single ${USER}
+    echo trained
+    
+    if [ -z "$(ls -A rec)" ]; then
+	echo "Empty"
+    else
+	rm rec/*
+    fi
+
+    # Testing and evaluating
+    ./scripts/recognise_test_data_single ${USER}
+    echo tested
+    WOR=$(./scripts/results ${USER} | grep WORD | \
+	cut -d "=" -f3 | cut -d" " -f1 | awk '{print 100 - $1}')
+    
+
+    if [ $WOR -gt 10 ]
+    then
+	echo User $USER has a WOR of $WOR, does not pass the test
+	echo $USER >> bad_users.txt	
+    fi
+
+done
+

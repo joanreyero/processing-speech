@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+USER=$1
+DATA=${DATA:-/Volumes/Network/courses/sp/data}
+
+
+PROTO=5state
+#set -x
+
+# initialise each model
+for WORD in `cat resources/word_list`
+do
+
+ #echo Initialising model of $WORD
+
+ HInit -T 0 \
+	-G ESPS \
+        -m 1 \
+        -C resources/CONFIG \
+        -l $WORD \
+        -M models/hmm0 \
+        -o $WORD \
+        -L ${DATA}/lab/train \
+	models/proto/$PROTO \
+	${DATA}/mfcc/train/${USER}_train.mfcc
+done

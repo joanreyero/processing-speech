@@ -18,9 +18,9 @@ DATA=/Volumes/Network/courses/sp/data
     for WORD in `cat resources/word_list`
     do
 	
-	echo training model of $WORD
+	#echo training model of $WORD
 	
-	HRest -T 1 \
+	HRest -T 0 \
 	    -G ESPS \
             -m 1 \
 	    -S ${MFCC_LIST_FILE} \

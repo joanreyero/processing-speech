@@ -31,7 +31,7 @@ fi
 
 
 
-if [ -z "$1" ]
+if [ -z "$3" ]
 then
     echo "No second test, ending"
 else
@@ -47,3 +47,5 @@ else
 
 fi
 
+rm models/hmm0/*
+rm models/hmm1/*

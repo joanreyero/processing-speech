@@ -32,7 +32,7 @@ def microphone_double(df, name, n_train, n_test):
 def accent_n_to_nn(df, name, n_train, n_test):
     native = df.loc[df['Accent'].str.contains("NA")==True]
     non_native = df.loc[df['Accent'].str.contains("NN")==True]
-    save_names(make_samples(native, n_train, native, non_native, n_test),
+    save_names(make_samples(native, n_train, non_native, native, n_test),
                name)
 
 def accent_nn_to_n(df, name, n_train, n_test):

@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+echo GENDER EXPERIMENTS
+echo With control over headset
+echo HYP: Males (1st) higher
+./scripts/run_experiment 1-gender-headset-train.txt 1-gender-headset-test.txt 1-gender-headset-test-2.txt 
+echo 
+echo Without control over headset
+echo HYP: Males (1st) higher
+echo ./scipts/run_experiment 2-gender-train.txt 2-gender-test.txt 2-gender-test-2.txt
+echo
+echo
+echo MICROPHONE EXPERIMENTS
+echo Simple experiment
+echo HYP: Computer (1st) higher than Phone (2nd)
+echo ./scripts/run_experiment 3-microphone-simple-train.txt 3-microphone-simple-test.txt 3-microphone-simple-test-2.txt
+echo
+echo Double experiment
+echo HYP: Equal Computer-Headset (1st) and Phone (2nd)
+echo ./scripts/run_experiment 4-microphone-double-train.txt 4-microphone-double-test.txt 4-microphone-double-test-2.txt
+echo
+echo
+echo ACCENT EXPERIMENTS
+echo 
+echo Training on Native; Testing on native and non-native
+echo HYP: Non-Native (1st) higher than Native (2nd)
+echo ./scripts/run_experiment 5-accent-native-nn-train.txt 5-accent-native-nn-test.txt 5-accent-native-nn-test-2.txt
+echo
+echo Training on Non Native; Testing on native and non-native
+echo HYP: Equal Non-Native (1st) and Native (2nd)
+echo ./scripts/run_experiment 6-accent-nn-native-train.txt 6-accent-nn-native-test.txt 6-accent-nn-native-test-2.txt
+echo
+echo
+
+
+

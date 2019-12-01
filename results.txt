@@ -1,0 +1,45 @@
+GENDER EXPERIMENTS
+With control over headset
+HYP: Males, 1st, higher than females, 2nd.
+6.88
+3.14
+
+Without control over headset
+HYP: Males, 1st, higher than females, 2nd.
+7.27
+11.33
+
+
+MICROPHONE EXPERIMENTS
+Simple experiment
+HYP: Computer, 1st, higher than Phone, 2nd.
+26
+22.33
+
+Double experiment
+HYP: Equal Computer-Headset, 1st, and Phone, 2nd.
+15.67
+14.67
+
+
+ACCENT EXPERIMENTS
+
+Training on Native. Testing on native and non-native
+HYP: Non-Native, 1st, higher than Native, 2nd.
+15.76
+9.44
+
+Training on Non Native. Testing on native and non-native
+HYP: Equal Non-Native, 1st, and Native, 2nd.
+14.33
+13.55
+
+
+SAMPLE SIZES
+HYP: same WOR
+Training on 50, testing on 10
+15.48
+No second test, ending
+Training on 20, testing on 10
+15.81
+No second test, ending

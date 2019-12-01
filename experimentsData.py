@@ -88,8 +88,8 @@ def main():
     microphone_double(df, '4-microphone-double', 20, 10)
     accent_n_to_nn(df, '5-accent-native-nn', 20, 10)
     accent_nn_to_n(df, '6-accent-nn-native', 20, 10)
-    general(df, '7-hmm-50', 50, 10)
-    general(df, '8-hmm-20', 20, 10)
+    general(df, '7-sample-50', 50, 10)
+    general(df, '8-sample-20', 20, 10)
 
 
 if __name__ == "__main__":

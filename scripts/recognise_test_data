@@ -17,8 +17,6 @@ DATA=/Volumes/Network/courses/sp/data
 
 shopt -s extglob
 
-echo Starting recognition
-
 for USER in `cat ${USER_LIST_FILE}`
 do
     #echo $USER

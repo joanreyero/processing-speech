@@ -77,7 +77,7 @@ def save_names(dfs, experiment):
 def sanity_check(df, good_users_file):
     users_file = open(good_users_file, 'r')
     users = [line[:-1] for line in users_file.readlines()]
-    return df[df['Name'].isin(users)]
+    return df[~df['Name'].isin(users)]
 
 def main():
     df = pd.read_csv('log.csv')

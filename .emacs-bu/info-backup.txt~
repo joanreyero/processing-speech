@@ -160,11 +160,11 @@ Year: 2004-5
 
 Name	  Gender	Microphone	Accent
 ----	  ------	----------	------
-s0125605  f		big		NA
+s0125605  f		big		NA 
 s0126339  m		headset		UK
 s0127196  f		headset		UK0
 s0231469  f		big		NN Germany
-s0450736  m		headset		NN
+s0450736  m		headset		NN 
 s0450918  f		small		NN Greece
 s0450928  f		big		NN Germany
 s0450990  f		big		NN Egypt
@@ -185,7 +185,7 @@ Year: 2005-6
 
 Name	  Gender	Microphone	Accent
 ----	  ------	----------	------
-s0235479    m             headset         UK
+s0235479    m             headset         UK 
 s0560804    f             headset         NN Israel
 s0562500    f             headset         NA
 s0563087    f             headset         NN France
@@ -335,7 +335,7 @@ s1153100    m      logitech_headset       NN Kazakhstan
 s1202144    m      logitech_headset       NN Sweden/England
 s1204234    f      laptop                 UK Southern England (macbook)
 s1204877    f      laptop                 NN Romania (macbook)
-s1208001    f      logitech headset       UK RP
+s1208001    f      logitech headset       UK RP 
 s1210107    m      logitech_headset       NN Dutch-Hungarian
 s1210764    f      logitech_headset       UK Southern England
 s1211535    m      logitech_headset       UK Northern England
@@ -374,7 +374,7 @@ s1466878    f      logitech_headset       NN China
 s1467926    m      logitech_headset       NA USA
 s1468596    f      logitech_headset       NN France
 s1469810    f      logitech_headset       NA
-s1473254    f      logitech_headset       NA American-Trinidadian
+s1473254    f      logitech_headset       NA American-Trinidadian 
 s1474926    m      logitech_headset       NN Thai
 
 

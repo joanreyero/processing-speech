@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-7.75, 1.5) {};
+		\node [style=white state] (1) at (-13.75, 9.25) {\frac{1}{2}};
+		\node [style=white state] (2) at (-12, 9.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1) to (2);
+		\draw [bend right=60, looseness=1.50] (0.center) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}

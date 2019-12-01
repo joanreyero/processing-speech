@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
-USER_LIST_TRAIN=$1
-USER_LIST_TEST=$2
-
+USER_LIST_TRAIN=experiment-data/$1
+USER_LIST_TEST=experiment-data/$2
+USER_LIST_TEST_2=experiment-data/$3
 
 USERS_MFCC_LIST_TRAIN=user_mfccs.txt
 
@@ -31,5 +31,19 @@ fi
 
 
 
+if [ -z "$1" ]
+then
+    echo "No second test, ending"
+else
+    if [ -z "$(ls -A rec)" ]; then
+	echo "Empty"
+    else
+	rm rec/*
+    fi
 
+    # Testing and evaluating
+    ./scripts/recognise_test_data ${USER_LIST_TEST_2}
+    ./scripts/results | grep WORD | cut -d "=" -f3 | cut -d" " -f1 | awk '{print 100 - $1}'
+
+fi
 
